@@ -33,8 +33,8 @@ const TabIcon = ({ focused, icon, color, size }: TabIconProps) => {
     };
   });
 
-  const activeColor = isDark ? "#000" : "#fff";
-  const inactiveColor = "#94a3b8";
+  const activeColor = isDark ? "#2d3748" : "#fff";
+  const inactiveColor = isDark ? "#fff" : "#2d3748";
 
   return (
     <Animated.View

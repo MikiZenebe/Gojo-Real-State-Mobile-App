@@ -1,7 +1,7 @@
-import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
+import { SafeAreaView, Text, View } from "react-native";
 
-const Explore = () => {
+const SearchSceen = () => {
   return (
     <SafeAreaView className="flex-1 bg-white">
       <View className="flex-1 items-center justify-center">
@@ -12,4 +12,4 @@ const Explore = () => {
   );
 };
 
-export default Explore;
+export default SearchSceen;
