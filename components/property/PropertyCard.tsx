@@ -24,7 +24,7 @@ export default function PropertyCard({
   return (
     <TouchableOpacity
       onPress={() => router.push(`/(root)/property/${property.id}`)}
-      className="flex-row bg-white rounded-2xl mb-4 overflow-hidden"
+      className="flex-row bg-white rounded-2xl mb-4 overflow-hidden dark:bg-gray-900S"
       style={{
         opacity: property.is_sold ? 0.5 : 1,
       }}
@@ -42,7 +42,7 @@ export default function PropertyCard({
             <View className="flex-row justify-between items-start">
               <View className="flex-1 pr-2">
                 <Text
-                  className="text-sm font-bold text-gray-800 mb-1"
+                  className="text-sm font-bold text-gray-800 mb-1 dark:text-white/80"
                   numberOfLines={1}
                 >
                   {property.title}

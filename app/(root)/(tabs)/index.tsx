@@ -108,9 +108,9 @@ export default function HomeScreen() {
                 Search properties, cities...
               </Text>
               <TouchableOpacity
-                // onPress={() =>
-                //   router.push("/(root)/(tabs)/search?openFilters=true")
-                // }
+                onPress={() =>
+                  router.push("/(root)/(tabs)/search?openFilters=true")
+                }
                 className="w-8 h-8 bg-blue-600 rounded-xl items-center justify-center"
               >
                 <Ionicons name="options-outline" size={15} color="white" />
