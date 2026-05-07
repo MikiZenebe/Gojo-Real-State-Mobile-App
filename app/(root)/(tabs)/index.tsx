@@ -1,4 +1,5 @@
 import FeaturedCard from "@/components/property/FeaturedCard";
+import PropertyCard from "@/components/property/PropertyCard";
 import { Text } from "@/components/ui/text";
 import { supabase } from "@/lib/supabase";
 import { Property } from "@/types";
@@ -147,8 +148,8 @@ export default function HomeScreen() {
           </View>
         }
         renderItem={({ item }) => (
-          <View className="px-5 mb-4">
-            <Text className="dark:text-white">{item.title}</Text>
+          <View className="px-5">
+            <PropertyCard property={item} />
           </View>
         )}
       />
