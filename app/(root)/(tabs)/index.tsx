@@ -1,5 +1,9 @@
-import FeaturedCard from "@/components/property/FeaturedCard";
-import PropertyCard from "@/components/property/PropertyCard";
+import FeaturedCard, {
+  FeaturedCardSkeleton,
+} from "@/components/property/FeaturedCard";
+import PropertyCard, {
+  PropertyCardSkeleton,
+} from "@/components/property/PropertyCard";
 import { Text } from "@/components/ui/text";
 import { supabase } from "@/lib/supabase";
 import { Property } from "@/types";
@@ -8,9 +12,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { useFocusEffect, useRouter } from "expo-router";
 import React, { useCallback, useState } from "react";
 import {
-  ActivityIndicator,
   FlatList,
   Image,
+  ScrollView,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -124,11 +128,15 @@ export default function HomeScreen() {
               </Text>
 
               {loading ? (
-                <ActivityIndicator
-                  size={"small"}
-                  color={"#2563eb"}
-                  className="py-10"
-                />
+                <ScrollView
+                  horizontal
+                  showsHorizontalScrollIndicator={false}
+                  contentContainerStyle={{ paddingHorizontal: 20 }}
+                >
+                  <FeaturedCardSkeleton />
+                  <FeaturedCardSkeleton />
+                  <FeaturedCardSkeleton />
+                </ScrollView>
               ) : (
                 <FlatList
                   data={featured}
@@ -157,7 +165,13 @@ export default function HomeScreen() {
             <View className="items-center py-10">
               <Text className="text-gray-400">No properties found</Text>
             </View>
-          ) : null
+          ) : (
+            <View className="px-5">
+              <PropertyCardSkeleton />
+              <PropertyCardSkeleton />
+              <PropertyCardSkeleton />
+            </View>
+          )
         }
       />
     </SafeAreaView>

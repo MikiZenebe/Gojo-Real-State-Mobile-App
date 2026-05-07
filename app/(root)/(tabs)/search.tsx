@@ -1,5 +1,5 @@
 import FilterModal from "@/components/property/FilterModal";
-import PropertyCard from "@/components/property/PropertyCard";
+import PropertyCard, { PropertyCardSkeleton } from "@/components/property/PropertyCard";
 import { Input } from "@/components/ui/input";
 import { Text } from "@/components/ui/text";
 import { supabase } from "@/lib/supabase";
@@ -209,7 +209,13 @@ const SearchSceen = () => {
               </Text>
             </View>
           ) : (
-            <ActivityIndicator size="large" color="#2563EB" className="py-20" />
+            <View className="mt-2">
+              <PropertyCardSkeleton />
+              <PropertyCardSkeleton />
+              <PropertyCardSkeleton />
+              <PropertyCardSkeleton />
+              <PropertyCardSkeleton />
+            </View>
           )
         }
       />

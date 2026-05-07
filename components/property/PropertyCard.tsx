@@ -103,3 +103,43 @@ export default function PropertyCard({
     </TouchableOpacity>
   );
 }
+
+export function PropertyCardSkeleton() {
+  return (
+    <View className="flex-row bg-white rounded-2xl mb-4 overflow-hidden dark:bg-gray-900 border-none">
+      <Card className="p-0 w-full overflow-hidden dark:bg-gray-900 border-none">
+        <View className="flex-row">
+          {/* Image Skeleton */}
+          <View className="w-28 h-28 bg-gray-200 dark:bg-gray-800 animate-pulse" />
+
+          {/* Info Skeleton */}
+          <View className="flex-1 p-3 justify-between">
+            <View className="flex-row justify-between items-start">
+              <View className="flex-1 pr-2">
+                <View className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-3/4 mb-2 animate-pulse" />
+                <View className="flex-row items-center gap-1">
+                  <View className="w-3 h-3 bg-gray-200 dark:bg-gray-800 rounded-full animate-pulse" />
+                  <View className="h-3 bg-gray-200 dark:bg-gray-800 rounded w-1/2 animate-pulse" />
+                </View>
+              </View>
+            </View>
+
+            <View className="flex-row items-center justify-between mt-2">
+              <View className="h-4 bg-gray-200 dark:bg-gray-800 rounded w-1/4 animate-pulse" />
+              <View className="flex-row gap-3">
+                <View className="flex-row items-center gap-1">
+                  <View className="w-3 h-3 bg-gray-200 dark:bg-gray-800 rounded-full animate-pulse" />
+                  <View className="h-3 bg-gray-200 dark:bg-gray-800 rounded w-8 animate-pulse" />
+                </View>
+                <View className="flex-row items-center gap-1">
+                  <View className="w-3 h-3 bg-gray-200 dark:bg-gray-800 rounded-full animate-pulse" />
+                  <View className="h-3 bg-gray-200 dark:bg-gray-800 rounded w-8 animate-pulse" />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </Card>
+    </View>
+  );
+}
