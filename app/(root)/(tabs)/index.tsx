@@ -149,9 +149,16 @@ export default function HomeScreen() {
         }
         renderItem={({ item }) => (
           <View className="px-5">
-            <PropertyCard property={item} />
+            <PropertyCard property={item} showSave={true} />
           </View>
         )}
+        ListEmptyComponent={
+          !loading ? (
+            <View className="items-center py-10">
+              <Text className="text-gray-400">No properties found</Text>
+            </View>
+          ) : null
+        }
       />
     </SafeAreaView>
   );

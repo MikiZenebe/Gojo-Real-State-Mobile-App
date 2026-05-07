@@ -1,3 +1,4 @@
+import { useSavedProperty } from "@/hooks/useSavedProperty";
 import { Property } from "@/types";
 import { formatPrice } from "@/utils/formatPrice";
 import { Ionicons } from "@expo/vector-icons";
@@ -15,10 +16,10 @@ export default function PropertyCard({
   showSave?: boolean;
 }) {
   const router = useRouter();
-  //   const { isSaved, saveLoading, toggleSave } = useSavedProperty(
-  //     property.id,
-  //     onUnsave,
-  //   );
+  const { isSaved, saveLoading, toggleSave } = useSavedProperty(
+    property.id,
+    onUnsave,
+  );
 
   return (
     <TouchableOpacity
@@ -38,19 +39,36 @@ export default function PropertyCard({
 
           {/* Info */}
           <View className="flex-1 p-3 justify-between">
-            <View>
-              <Text
-                className="text-sm font-bold text-gray-800 mb-1"
-                numberOfLines={1}
-              >
-                {property.title}
-              </Text>
-              <View className="flex-row items-center gap-1">
-                <Ionicons name="location-outline" size={11} color="#6B7280" />
-                <Text className="text-xs text-gray-500" numberOfLines={1}>
-                  {property.city}
+            <View className="flex-row justify-between items-start">
+              <View className="flex-1 pr-2">
+                <Text
+                  className="text-sm font-bold text-gray-800 mb-1"
+                  numberOfLines={1}
+                >
+                  {property.title}
                 </Text>
+                <View className="flex-row items-center gap-1">
+                  <Ionicons name="location-outline" size={11} color="#6B7280" />
+                  <Text className="text-xs text-gray-500" numberOfLines={1}>
+                    {property.city}
+                  </Text>
+                </View>
               </View>
+
+              {/* Save Button */}
+              {showSave && (
+                <TouchableOpacity
+                  onPress={toggleSave}
+                  disabled={saveLoading}
+                  className="p-1 -mt-1 -mr-1"
+                >
+                  <Ionicons
+                    name={isSaved ? "heart" : "heart-outline"}
+                    size={20}
+                    color={isSaved ? "#EF4444" : "#9CA3AF"}
+                  />
+                </TouchableOpacity>
+              )}
             </View>
 
             <View className="flex-row items-center justify-between">
@@ -82,22 +100,6 @@ export default function PropertyCard({
           </View>
         </View>
       </Card>
-      {/* Image */}
-
-      {/* Save Button
-      {showSave && (
-        <TouchableOpacity
-          onPress={toggleSave}
-          disabled={saveLoading}
-          className="w-10 items-center pt-3"
-        >
-          <Ionicons
-            name={isSaved ? "heart" : "heart-outline"}
-            size={18}
-            color={isSaved ? "#EF4444" : "#9CA3AF"}
-          />
-        </TouchableOpacity>
-      )} */}
     </TouchableOpacity>
   );
 }
