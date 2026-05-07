@@ -48,7 +48,7 @@ export const CustomAlert = ({
           <View className="items-center">
             <View
               className={`mb-4 h-16 w-16 items-center justify-center rounded-full ${
-                type === "error" ? "bg-red-100" : "bg-green-100"
+                type === "error" ? "bg-red-100 dark:bg-red-500/15" : "bg-green-100 dark:bg-green-500/15"
               }`}
             >
               <MaterialIcons
@@ -60,10 +60,10 @@ export const CustomAlert = ({
               />
             </View>
 
-            <Text className="mb-2 text-center text-xl font-bold dark:text-white">
+            <Text className="mb-2 text-center text-xl font-bold dark:text-foreground">
               {title}
             </Text>
-            <Text className="mb-6 text-center text-gray-500 dark:text-gray-400">
+            <Text className="mb-6 text-center text-gray-500 dark:text-muted-foreground">
               {message}
             </Text>
 

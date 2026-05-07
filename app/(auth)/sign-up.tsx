@@ -79,7 +79,7 @@ export default function SignUpScreen() {
     signUp.missingFields.length === 0
   ) {
     return (
-      <View className="flex-1 justify-center items-center bg-white dark:bg-black px-6">
+      <View className="flex-1 justify-center items-center bg-white dark:bg-background px-6">
         <Image
           source={require("../../assets/images/icon.png")}
           className="w-32 h-16 mb-8 dark:hidden"
@@ -90,15 +90,15 @@ export default function SignUpScreen() {
           className="w-32 h-16 mb-8 hidden dark:flex"
           resizeMode="contain"
         />
-        <Text className="text-2xl font-bold text-gray-800 mb-2 dark:text-white">
+        <Text className="text-2xl font-bold text-gray-800 mb-2 dark:text-foreground">
           Verify your account
         </Text>
-        <Text className="text-gray-500 mb-8 text-center dark:text-gray-400">
+        <Text className="text-gray-500 mb-8 text-center dark:text-muted-foreground">
           We sent a code to {email}
         </Text>
 
         <Input
-          className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-4 dark:border-gray-500 dark:bg-gray-900 dark:text-white"
+          className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-4 dark:border-border dark:bg-card dark:text-foreground"
           placeholder="Enter verification code"
           placeholderTextColor="#9CA3AF"
           keyboardType="number-pad"
@@ -109,7 +109,7 @@ export default function SignUpScreen() {
         <Button
           onPress={onVerifyPress}
           disabled={isLoading}
-          className="w-full bg-blue-600 rounded-xl items-center mb-4"
+          className="w-full bg-blue-600 rounded-xl items-center mb-4 dark:bg-blue-500"
         >
           {isLoading ? (
             <ActivityIndicator color="white" />
@@ -139,7 +139,7 @@ export default function SignUpScreen() {
         contentContainerStyle={{
           flexGrow: 1,
         }}
-        className="bg-white dark:bg-black"
+        className="bg-white dark:bg-background"
         keyboardShouldPersistTaps="handled"
       >
         <View className="flex-1 justify-center px-6 py-12">
@@ -155,17 +155,17 @@ export default function SignUpScreen() {
           />
           <Text
             variant={"h3"}
-            className="font-bold text-gray-800 mb-2 dark:text-white"
+            className="font-bold text-gray-800 mb-2 dark:text-foreground"
           >
             Create Account
           </Text>
-          <Text className="text-gray-500 mb-8 dark:text-gray-400">
+          <Text className="text-gray-500 mb-8 dark:text-muted-foreground">
             Find your dream home today
           </Text>
 
           <View className="flex-row gap-3 mb-4">
             <Input
-              className="flex-1 border border-gray-300 bg-white rounded-xl px-4 py-3 text-black dark:border-gray-500 dark:bg-gray-900 dark:text-white"
+              className="flex-1 border border-gray-300 bg-white rounded-xl px-4 py-3 text-black dark:border-border dark:bg-card dark:text-foreground"
               autoCapitalize="words"
               placeholder="First Name"
               placeholderTextColor="#9ca3af"
@@ -174,7 +174,7 @@ export default function SignUpScreen() {
             />
 
             <Input
-              className="flex-1 border border-gray-300 bg-white rounded-xl px-4 py-3 text-black dark:border-gray-500 dark:bg-gray-900 dark:text-white"
+              className="flex-1 border border-gray-300 bg-white rounded-xl px-4 py-3 text-black dark:border-border dark:bg-card dark:text-foreground"
               autoCapitalize="words"
               placeholder="Last Name"
               placeholderTextColor="#9ca3af"
@@ -184,7 +184,7 @@ export default function SignUpScreen() {
           </View>
 
           <Input
-            className="w-full border border-gray-300 bg-white rounded-xl px-4 py-3 text-black dark:border-gray-500 dark:bg-gray-900 dark:text-white mb-4"
+            className="w-full border border-gray-300 bg-white rounded-xl px-4 py-3 text-black dark:border-border dark:bg-card dark:text-foreground mb-4"
             autoCapitalize="none"
             keyboardType="email-address"
             placeholder="Email Address"
@@ -194,7 +194,7 @@ export default function SignUpScreen() {
           />
 
           <Input
-            className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-6 dark:border-gray-500 dark:bg-gray-900 dark:text-white"
+            className="w-full border border-gray-300 rounded-xl px-4 py-3 mb-6 dark:border-border dark:bg-card dark:text-foreground"
             placeholder="Password"
             placeholderTextColor="#9CA3AF"
             value={password}
@@ -204,7 +204,7 @@ export default function SignUpScreen() {
 
           <Button
             disabled={isLoading}
-            className="w-full bg-blue-600 rounded-xl items-center mb-4"
+            className="w-full bg-blue-600 rounded-xl items-center mb-4 dark:bg-blue-500"
             onPress={onSignUpPress}
           >
             {isLoading ? (
@@ -215,7 +215,7 @@ export default function SignUpScreen() {
           </Button>
 
           <View className="flex-row justify-center">
-            <Text className="text-gray-500">Already have an account? </Text>
+            <Text className="text-gray-500 dark:text-muted-foreground">Already have an account? </Text>
             <Link href="/sign-in">
               <Text className="text-blue-600 font-semibold">Sign In</Text>
             </Link>

@@ -16,6 +16,7 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
+  useColorScheme,
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -23,6 +24,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function HomeScreen() {
   const { user } = useUser();
   const router = useRouter();
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === "dark";
 
   const getGreeting = () => {
     const hour = new Date().getHours();
@@ -62,7 +65,7 @@ export default function HomeScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-white dark:bg-black">
+    <SafeAreaView className="flex-1 bg-white dark:bg-background">
       <FlatList
         data={recommended}
         keyExtractor={(item) => item.id}
@@ -86,10 +89,10 @@ export default function HomeScreen() {
               />
 
               <View className="items-end">
-                <Text className="text-gray-500 text-xs dark:text-white/70">
+                <Text className="text-gray-500 text-xs dark:text-muted-foreground">
                   {getGreeting()} 👋
                 </Text>
-                <Text className="text-gray-900 text-base font-bold dark:text-white">
+                <Text className="text-gray-900 text-base font-bold dark:text-foreground">
                   {user?.firstName ?? "User"}
                 </Text>
               </View>
@@ -98,24 +101,24 @@ export default function HomeScreen() {
             {/* Search Bar */}
             <TouchableOpacity
               onPress={() => router.push("/(root)/(tabs)/search")}
-              className="mx-5 mb-6 flex-row items-center bg-white rounded-2xl px-4 py-3 gap-3 dark:bg-gray-900"
+              className="mx-5 mb-6 flex-row items-center bg-white rounded-2xl px-4 py-3 gap-3 dark:bg-card dark:border dark:border-border"
               style={{
-                shadowColor: "#000",
-                shadowOffset: { width: 0, height: 1 },
-                shadowOpacity: 0.06,
-                shadowRadius: 6,
+                shadowColor: isDark ? "#3B82F6" : "#000",
+                shadowOffset: { width: 0, height: isDark ? 0 : 1 },
+                shadowOpacity: isDark ? 0.08 : 0.06,
+                shadowRadius: isDark ? 12 : 6,
                 elevation: 2,
               }}
             >
-              <Ionicons name="search-outline" size={18} color="#9ca3af" />
-              <Text className="text-gray-400 text-sm flex-1">
+              <Ionicons name="search-outline" size={18} color={isDark ? "#64748B" : "#9ca3af"} />
+              <Text className="text-gray-400 text-sm flex-1 dark:text-muted-foreground">
                 Search properties, cities...
               </Text>
               <TouchableOpacity
                 onPress={() =>
                   router.push("/(root)/(tabs)/search?openFilters=true")
                 }
-                className="w-8 h-8 bg-blue-600 rounded-xl items-center justify-center"
+                className="w-8 h-8 bg-blue-600 rounded-xl items-center justify-center dark:bg-blue-500"
               >
                 <Ionicons name="options-outline" size={15} color="white" />
               </TouchableOpacity>
@@ -123,7 +126,7 @@ export default function HomeScreen() {
 
             {/* Featured Section */}
             <View className="mb-6">
-              <Text className="text-gray-900 text-lg font-bold px-5 mb-4 dark:text-white/80">
+              <Text className="text-gray-900 text-lg font-bold px-5 mb-4 dark:text-foreground">
                 Featured
               </Text>
 
@@ -150,7 +153,7 @@ export default function HomeScreen() {
             </View>
 
             {/* Recommended Header */}
-            <Text className="text-gray-900 text-lg font-bold px-5 mb-4 dark:text-white/80">
+            <Text className="text-gray-900 text-lg font-bold px-5 mb-4 dark:text-foreground">
               Recommended
             </Text>
           </View>
@@ -163,7 +166,7 @@ export default function HomeScreen() {
         ListEmptyComponent={
           !loading ? (
             <View className="items-center py-10">
-              <Text className="text-gray-400">No properties found</Text>
+              <Text className="text-gray-400 dark:text-muted-foreground">No properties found</Text>
             </View>
           ) : (
             <View className="px-5">

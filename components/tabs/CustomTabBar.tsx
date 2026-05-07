@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import React, { useEffect } from "react";
-import { Dimensions, Pressable, StyleSheet, View } from "react-native";
+import { Dimensions, Pressable, StyleSheet, useColorScheme, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -19,6 +19,8 @@ const CustomTabBar = ({
 }: BottomTabBarProps) => {
   const numTabs = state.routes.length;
   const tabWidth = TAB_BAR_WIDTH / numTabs;
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === "dark";
 
   const translateX = useSharedValue(0);
 
@@ -36,11 +38,19 @@ const CustomTabBar = ({
 
   return (
     <View style={styles.container}>
-      <View style={styles.tabBar} className="bg-white dark:bg-gray-800">
+      <View
+        style={[
+          styles.tabBar,
+          isDark ? styles.tabBarDark : styles.tabBarLight,
+        ]}
+        className="bg-white dark:bg-card"
+      >
         <Animated.View style={[styles.indicator, indicatorStyle]}>
           <View
-            style={styles.indicatorInner}
-            className="bg-black dark:bg-white"
+            style={[
+              styles.indicatorInner,
+              isDark ? styles.indicatorInnerDark : styles.indicatorInnerLight,
+            ]}
           />
         </Animated.View>
 
@@ -65,14 +75,18 @@ const CustomTabBar = ({
               {options.tabBarIcon ? (
                 options.tabBarIcon({
                   focused: isFocused,
-                  color: isFocused ? "white" : "#666876",
+                  color: isFocused
+                    ? isDark ? "#1E293B" : "white"
+                    : isDark ? "#64748B" : "#666876",
                   size: 24,
                 })
               ) : (
                 <Ionicons
                   name="help-outline"
                   size={24}
-                  color={isFocused ? "white" : "#666876"}
+                  color={isFocused
+                    ? isDark ? "#1E293B" : "white"
+                    : isDark ? "#64748B" : "#666876"}
                 />
               )}
             </Pressable>
@@ -92,16 +106,25 @@ const styles = StyleSheet.create({
   },
   tabBar: {
     flexDirection: "row",
-
     width: TAB_BAR_WIDTH,
     height: 64,
     borderRadius: 32,
+  },
+  tabBarLight: {
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.05,
     shadowRadius: 12,
     borderWidth: 1,
     borderColor: "rgba(0,0,0,0.05)",
+  },
+  tabBarDark: {
+    shadowColor: "#3B82F6",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.12,
+    shadowRadius: 20,
+    borderWidth: 1,
+    borderColor: "rgba(59,130,246,0.15)",
   },
   tabItem: {
     flex: 1,
@@ -118,6 +141,16 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     borderRadius: 24,
+  },
+  indicatorInnerLight: {
+    backgroundColor: "#000",
+  },
+  indicatorInnerDark: {
+    backgroundColor: "#E2E8F0",
+    shadowColor: "#3B82F6",
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
   },
 });
 
