@@ -101,16 +101,20 @@ export default function HomeScreen() {
             {/* Search Bar */}
             <TouchableOpacity
               onPress={() => router.push("/(root)/(tabs)/search")}
-              className="mx-5 mb-6 flex-row items-center bg-white rounded-2xl px-4 py-3 gap-3 dark:bg-card dark:border dark:border-border"
+              className="mx-5 mb-6 flex-row items-center bg-white rounded-2xl px-4 py-3 gap-3 dark:bg-card dark:border dark:border-border border border-border"
               style={{
                 shadowColor: isDark ? "#3B82F6" : "#000",
-                shadowOffset: { width: 0, height: isDark ? 0 : 1 },
-                shadowOpacity: isDark ? 0.08 : 0.06,
-                shadowRadius: isDark ? 12 : 6,
-                elevation: 2,
+                shadowOffset: { width: 0, height: isDark ? 0 : 0 },
+                shadowOpacity: isDark ? 0.08 : 0,
+                shadowRadius: isDark ? 12 : 0,
+                elevation: 0,
               }}
             >
-              <Ionicons name="search-outline" size={18} color={isDark ? "#64748B" : "#9ca3af"} />
+              <Ionicons
+                name="search-outline"
+                size={18}
+                color={isDark ? "#64748B" : "#9ca3af"}
+              />
               <Text className="text-gray-400 text-sm flex-1 dark:text-muted-foreground">
                 Search properties, cities...
               </Text>
@@ -166,7 +170,9 @@ export default function HomeScreen() {
         ListEmptyComponent={
           !loading ? (
             <View className="items-center py-10">
-              <Text className="text-gray-400 dark:text-muted-foreground">No properties found</Text>
+              <Text className="text-gray-400 dark:text-muted-foreground">
+                No properties found
+              </Text>
             </View>
           ) : (
             <View className="px-5">

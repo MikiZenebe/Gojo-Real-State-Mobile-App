@@ -16,6 +16,10 @@ interface CustomAlertProps {
   onClose: () => void;
   title?: string;
   type?: "error" | "success";
+  /** If provided, the alert becomes a confirmation dialog with Cancel + Confirm buttons */
+  onConfirm?: () => void;
+  confirmLabel?: string;
+  cancelLabel?: string;
 }
 
 export const CustomAlert = ({
@@ -24,7 +28,12 @@ export const CustomAlert = ({
   onClose,
   title = "Error",
   type = "error",
+  onConfirm,
+  confirmLabel = "Confirm",
+  cancelLabel = "Cancel",
 }: CustomAlertProps) => {
+  const isConfirmDialog = !!onConfirm;
+
   return (
     <Modal transparent visible={visible} onRequestClose={onClose}>
       <View style={styles.overlay}>
@@ -67,13 +76,36 @@ export const CustomAlert = ({
               {message}
             </Text>
 
-            <Button
-              onPress={onClose}
-              variant={type === "error" ? "destructive" : "default"}
-              className="w-full rounded-xl"
-            >
-              <Text className="text-base font-bold text-white">Got it</Text>
-            </Button>
+            {isConfirmDialog ? (
+              <View className="w-full flex-row gap-3">
+                <Button
+                  onPress={onClose}
+                  variant="outline"
+                  className="flex-1 rounded-xl"
+                >
+                  <Text className="text-base font-bold dark:text-foreground">
+                    {cancelLabel}
+                  </Text>
+                </Button>
+                <Button
+                  onPress={onConfirm}
+                  variant="destructive"
+                  className="flex-1 rounded-xl"
+                >
+                  <Text className="text-base font-bold text-white">
+                    {confirmLabel}
+                  </Text>
+                </Button>
+              </View>
+            ) : (
+              <Button
+                onPress={onClose}
+                variant={type === "error" ? "destructive" : "default"}
+                className="w-full rounded-xl"
+              >
+                <Text className="text-base font-bold text-white">Got it</Text>
+              </Button>
+            )}
           </View>
         </Animated.View>
       </View>
