@@ -2,6 +2,9 @@
 
 A modern, fully functional real estate mobile application built with **React Native** and **Expo**. Gojo helps users discover their dream homes, apartments, and villas, while also allowing property owners to seamlessly list their properties on the market.
 
+<img width="1024" height="572" alt="gojo" src="https://github.com/user-attachments/assets/4ed06336-db54-4f82-82df-f0212c05f7a4" />
+
+
 ## ✨ Highlights
 
 *   📱 **Fully Functional Mobile App** built with React Native & Expo.
@@ -24,5 +27,11 @@ A modern, fully functional real estate mobile application built with **React Nat
 | **Backend & Database** | Supabase (PostgreSQL) |
 | **Storage** | Supabase Storage (Buckets) |
 | **Authentication** | Clerk |
+
+## ▶️ Demo
+
+https://github.com/user-attachments/assets/da905367-d979-4e69-bba5-aa8933ecaabc
+
+
 
 
