@@ -1,51 +1,28 @@
-# Welcome to your Expo app 👋
+# 🏡 Gojo Real Estate App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A modern, fully functional real estate mobile application built with **React Native** and **Expo**. Gojo helps users discover their dream homes, apartments, and villas, while also allowing property owners to seamlessly list their properties on the market.
 
-## Get started
+## ✨ Highlights
 
-1. Install dependencies
+*   📱 **Fully Functional Mobile App** built with React Native & Expo.
+*   🌎 **Cross-Platform Support** for both iOS & Android.
+*   🔐 **Secure Authentication** via Clerk (Email & Social Login).
+*   🏠 **Property Listings** to explore and add apartments, houses, villas, and studios.
+*   📍 **Location Detection** for accurately pinning property coordinates.
+*   📸 **Image Uploads** powered by Supabase Storage for property galleries and user avatars.
+*   ❤️ **Favorites System** to save and track your preferred properties.
+*   🎨 **Premium UI** heavily styled with NativeWind (Tailwind CSS for React Native).
+*   🌙 **Smooth Dark & Light Mode** support across the entire application.
+*   🔔 **Custom Alert System** for a unified, modern user feedback experience.
 
-   ```bash
-   npm install
-   ```
+## 🛠️ Tech Stack
 
-2. Start the app
+| Layer | Technology |
+| :--- | :--- |
+| **Frontend** | React Native, Expo Router |
+| **Styling** | NativeWind (TailwindCSS) |
+| **Backend & Database** | Supabase (PostgreSQL) |
+| **Storage** | Supabase Storage (Buckets) |
+| **Authentication** | Clerk |
 
-   ```bash
-   npx expo start
-   ```
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
-# Gojo-Real-State-Mobile-App
